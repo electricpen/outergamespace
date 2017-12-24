@@ -1,4 +1,4 @@
-<p align="center"><img src="/images/output_large.gif" height="50%" width="50%" ></p>
+<p align="center"><img src="/images/output.gif" height="50%" width="50%" ></p>
 
 # OuterGameSpace [![Build Status](https://travis-ci.org/outergamespace/outergamespace.svg?branch=develop)](https://travis-ci.org/outergamespace/outergamespace)
 
