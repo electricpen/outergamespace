@@ -61,12 +61,6 @@ class GameListItem extends React.Component {
           game={this.props.game}
           click={this.handleClick}
         />
-        {
-          // <p>Room Code: {this.props.game.room_id}</p>
-          // <p># Questions: {this.props.game.num_questions}</p>
-          // <p>Max Players: {this.props.game.max_players}</p>
-          // <p># Players: {this.state.numPlayers}</p>
-        }
       </div>
     );
   }

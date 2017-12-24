@@ -12,12 +12,10 @@ const propTypes = {
 
 const defaultProps = {
   final: false,
-  returnToLobby: () => {},
+  returnToLobby: () => {}
 };
 
-const updateUserScore = (username, gameScore) => (
-  axios.post('/user', { username, gameScore })
-);
+const updateUserScore = (username, gameScore) => axios.post('/user', { username, gameScore });
 
 const Scoreboard = ({ players, final, returnToLobby }) => {
   const sortedPlayers = _.sortBy(players, 'score').reverse();
@@ -30,8 +28,7 @@ const Scoreboard = ({ players, final, returnToLobby }) => {
             <div className="list-group list-group-flush scoreboardList">
               {sortedPlayers.map((player) => {
                 if (final) {
-                  updateUserScore(player.username, player.score)
-                    .then(() => 'done');
+                  updateUserScore(player.username, player.score).then(() => 'done');
                 }
                 return <ScoreboardEntry player={player} />;
               })}
@@ -41,43 +38,13 @@ const Scoreboard = ({ players, final, returnToLobby }) => {
       </div>
 
       <div className="screen-bottom">
-        {final && <button onClick={returnToLobby} >Return to Lobby</button>}
+        {final && <button onClick={returnToLobby}>Return to Lobby</button>}
       </div>
     </div>
-  )
+  );
 };
 
 Scoreboard.propTypes = propTypes;
 Scoreboard.defaultProps = defaultProps;
 
 export default Scoreboard;
-
-// return (
-//   <div className="screen">
-//     <div className="screen-top" >{final && 'Final'} Scoreboard</div>
-
-//     <div className="screen-middle screen-bordered" >
-//       <div className="table-body">
-//         <div className="table-col">
-//           {sortedPlayers.map(player => (
-//             <div key={player.username} className="table-row" >{player.username}</div>
-//           ))}
-//         </div>
-
-//         <div className="table-col">
-//           {sortedPlayers.map((player) => {
-//             if (final) {
-//               updateUserScore(player.username, player.score)
-//                 .then(() => 'done');
-//             }
-//             return (<div key={player.username} className="table-row" >{player.score}</div>);
-//           })}
-//         </div>
-//       </div>
-//     </div>
-
-//     <div className="screen-bottom">
-//       {final && <button onClick={restartGame} >New Game</button>}
-//     </div>
-//   </div>
-// );

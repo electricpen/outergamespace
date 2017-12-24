@@ -10,14 +10,14 @@ const propTypes = {
   answers: PropTypes.arrayOf(PropTypes.string).isRequired,
   players: PropTypes.arrayOf(PropTypes.object).isRequired,
   time: PropTypes.number.isRequired,
-  socketClientInterface: PropTypes.instanceOf(SocketClientInterface).isRequired,
+  socketClientInterface: PropTypes.instanceOf(SocketClientInterface).isRequired
 };
 
 class Question extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      correctAns: '',
+      correctAns: ''
     };
 
     /* METHOD BINDING */
@@ -46,25 +46,19 @@ class Question extends React.Component {
     const { correctAns } = this.state;
     return (
       <div className="container-fluid gameBackground">
-
         <div className="row align-items-center justify-content-center">
           <Timer seconds={time} counting={correctAns === ''} />
         </div>
 
         <div className="row align-items-center justify-content-center">
           <div className="card-deck animated slideInLeft">
-
             <div className="card col-sm-10 presenterQuestionCard align-items-center justify-content-center">
               <div className="card-body">
-
-                <div className="card-title presenterText">
-                  {question}
-                </div>
+                <div className="card-title presenterText">{question}</div>
 
                 <div className="list-group list-group-flush">
                   <AnswerList answers={answers} correctAns={correctAns} />
                 </div>
-
               </div>
             </div>
 
@@ -75,41 +69,13 @@ class Question extends React.Component {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
       </div>
-    )
+    );
   }
-
 }
 
 Question.propTypes = propTypes;
 
 export default Question;
-
-// original render method before Bootstrap 4 refactor:
-
-// render() {
-//   const { question, answers, players, time } = this.props;
-//   const { correctAns } = this.state;
-//   return (
-//     <div className="screen screen-horizontal">
-//       <div className="screen-main">
-//         <div className="screen-top">
-//           {question}
-//         </div>
-
-//         <AnswerList answers={answers} correctAns={correctAns} />
-//       </div>
-
-//       <div className="screen-sidebar">
-//         <Timer seconds={time} counting={correctAns === ''} />
-
-//         <div className="screen-middle screen-bordered">
-//           <AnsweredPlayerList players={players} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

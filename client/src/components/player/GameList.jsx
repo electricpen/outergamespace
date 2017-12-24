@@ -6,14 +6,14 @@ import SocketClientInterface from '../../../../socket/socketClientInterface';
 const propTypes = {
   createGame: PropTypes.func.isRequired,
   joinGame: PropTypes.func.isRequired,
-  socketClientInterface: PropTypes.instanceOf(SocketClientInterface).isRequired
+  socketClientInterface: PropTypes.instanceOf(SocketClientInterface).isRequired,
 };
 
 class GameList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      games: []
+      games: [],
     };
 
     this.addGame = this.addGame.bind(this);
@@ -25,7 +25,7 @@ class GameList extends React.Component {
       .then(res => res.json())
       .then((data) => {
         this.setState({
-          games: data
+          games: data,
         });
       })
       .catch(console.error);
@@ -45,19 +45,19 @@ class GameList extends React.Component {
 
   removeGame(roomId) {
     this.setState({
-      games: this.state.games.filter(game => game.room_id !== roomId)
+      games: this.state.games.filter(game => game.room_id !== roomId),
     });
   }
 
   render() {
-    const gameListItems = this.state.games.map(game =>
-      (<GameListItem
+    const gameListItems = this.state.games.map(game => (
+      <GameListItem
         key={game.room_id}
         game={game}
         joinGame={this.props.joinGame}
         socketClientInterface={this.props.socketClientInterface}
-      />)
-    );
+      />
+    ));
 
     return (
       <div>
@@ -66,7 +66,9 @@ class GameList extends React.Component {
           <button
             className="btn btn-outline-light ml-1 mr-3 leaderboardText"
             onClick={this.props.createGame}
-          >Create Game</button>
+          >
+            Create Game
+          </button>
         </div>
       </div>
     );

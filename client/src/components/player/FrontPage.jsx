@@ -16,7 +16,7 @@ class FrontPage extends React.Component {
 
       // form values
       username: '',
-      password: '',
+      password: ''
     };
 
     this.handleLogin = props.handleLogin;
@@ -57,7 +57,7 @@ class FrontPage extends React.Component {
     this.setState({
       [name]: input
     });
-  };
+  }
 
   setGuestView() {
     this.setState({
@@ -69,7 +69,7 @@ class FrontPage extends React.Component {
       registerText: 'animated bounceOutUp',
       passwordField: 'invisible'
     });
-  };
+  }
 
   setRegisterView() {
     this.setState({
@@ -81,7 +81,7 @@ class FrontPage extends React.Component {
       passwordField: 'animated bounceInUp',
       registerTextTop: 'animated bounceInUp'
     });
-  };
+  }
 
   resetView() {
     if (this.state.mode === 'guest') {
@@ -100,7 +100,7 @@ class FrontPage extends React.Component {
     if (this.state.mode === 'login' || this.state.mode === 'register') {
       this.setState({
         passwordField: 'animated bounceOutRight'
-      })
+      });
     }
     this.setState({
       mode: 'welcome',
@@ -109,21 +109,49 @@ class FrontPage extends React.Component {
       registerText: 'animated bounceInLeft',
       loginForm: 'animated bounceOutRight'
     });
-  };
+  }
 
   render() {
     return (
       <div className="frontpageBackground container-fluid">
-        <img className="marsBackground" src="../../mars.jpg" alt="mars"/>
+        <img className="marsBackground" src="../../mars.jpg" alt="mars" />
         <div className="row">
           <h1 className="titleText col text-center">OuterGameSpace</h1>
         </div>
-        <h1 onClick={this.setLoginView} className={`loginText col text-center ${this.state.loginText}`}>Login</h1>
-        <h1 onClick={this.resetView} className={`registerTextTop col text-center ${this.state.registerTextTop}`}>Register</h1>
-        <h1 onClick={this.resetView} className={`guestTextTop col text-center ${this.state.guestTextTop}`}>Guest</h1>
-        <h1 onClick={this.setGuestView} className={`guestText col text-center ${this.state.guestText}`}>Guest</h1>
-        <h1 onClick={this.setRegisterView} className={`registerText col text-center ${this.state.registerText}`}>Register</h1>
-        <form onSubmit={this.handleLogin} className={`loginForm col text-center ${this.state.loginForm}`}>
+        <h1
+          onClick={this.setLoginView}
+          className={`loginText col text-center ${this.state.loginText}`}
+        >
+          Login
+        </h1>
+        <h1
+          onClick={this.resetView}
+          className={`registerTextTop col text-center ${this.state.registerTextTop}`}
+        >
+          Register
+        </h1>
+        <h1
+          onClick={this.resetView}
+          className={`guestTextTop col text-center ${this.state.guestTextTop}`}
+        >
+          Guest
+        </h1>
+        <h1
+          onClick={this.setGuestView}
+          className={`guestText col text-center ${this.state.guestText}`}
+        >
+          Guest
+        </h1>
+        <h1
+          onClick={this.setRegisterView}
+          className={`registerText col text-center ${this.state.registerText}`}
+        >
+          Register
+        </h1>
+        <form
+          onSubmit={this.handleLogin}
+          className={`loginForm col text-center ${this.state.loginForm}`}
+        >
           <div className="row justify-content-md-center input-group">
             <input
               className="loginInput form-control col col-sm-4"
@@ -132,8 +160,8 @@ class FrontPage extends React.Component {
               placeholder="username"
               onKeyDown={this.checkSubmit}
               onChange={this.loginHandler}
-              value={this.state.username}>
-            </input>
+              value={this.state.username}
+            />
           </div>
           <div className="row justify-content-md-center input-group">
             <input
@@ -143,20 +171,13 @@ class FrontPage extends React.Component {
               placeholder="password"
               onKeyDown={this.checkSubmit}
               onChange={this.loginHandler}
-              value={this.state.password}>
-            </input>
+              value={this.state.password}
+            />
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
 
 export default FrontPage;
-
-
-/*
-guest button <--
-  - float up to cover login
-  - input field floats up to cover the guest field
-*/
